@@ -7,7 +7,7 @@ on:
 
 env:
   DOTNET_VERSION: '5.0.x'
-  AZURE_WEBAPP_NAME: traincicdwebapi
+  AZURE_WEBAPP_NAME: first-web-api
 
 jobs:
   build:
