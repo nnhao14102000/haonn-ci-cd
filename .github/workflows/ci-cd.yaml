@@ -7,11 +7,11 @@ on:
 
 env:
   DOTNET_VERSION: '5.0.x'
-  AZURE_WEBAPP_NAME: first-web-api
+  AZURE_WEBAPP_NAME: sec-web-api
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Check out code 🛎️
         uses: actions/checkout@v2
@@ -30,13 +30,13 @@ jobs:
       - name: Run automated tests 🧪
         run: dotnet test -c Release --no-build
       
-      # - name: Publish app 📰
-      #   run: dotnet publish -c Release -o ./out
+      - name: Publish app 📰
+        run: dotnet publish -c Release -o ./out
 
-      # - name: Deploy to Azure Web App 🚢
-      #   uses: azure/webapps-deploy@v2
-      #   with: 
-      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-      #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_SECRET }}
-      #     package: ./out
+      - name: Deploy to Azure Web App 🚢
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C3D564EB525641DFBFC0710AB58AFBC6 }}
+          package: ./out
 
